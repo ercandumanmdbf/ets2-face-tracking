@@ -50,23 +50,6 @@ Kamera önizlemesi yalnızca kalibrasyon sırasında görünür. Beş saniye son
 
 Arayüzdeki FPS değeri gerçek kamera işleme hızını gösterir. TruckLook 120 FPS'e kadar akış istese de son hız webcam, sürücü, ışık ve bilgisayar performansına bağlıdır. OpenTrack çıkışı 120 Hz olarak ara değerlenmeye devam eder.
 
-## Geliştirme
-
-Node.js 20 veya daha yenisi gerekir.
-
-```powershell
-npm install
-npm run dev
-npm test
-npm run package
-```
-
-Taşınabilir Windows uygulaması `release/` altında oluşturulur. MediaPipe WASM dosyaları derleme sırasında npm bağımlılığından kopyalanır. Face Landmarker modeli çalışma anında Google'ın resmî model adresinden indirilir ve bu depoda yeniden dağıtılmaz.
-
-## GitHub'da yayımlama
-
-Paketlemeden sonra `npm run prepare:github` çalıştırın. Kaynak depoya yalnızca `github-upload/` klasörünün içeriğini gönderin. Çalıştırılabilir dosyayı commit etmek yerine `github-release/` içeriğini bir GitHub Release'e ekleyin. Tam komutlar için [yükleme kılavuzuna](../GITHUB_UPLOAD_GUIDE_TR.md) bakın.
-
 ## Lisans
 
 MIT © 2026 ErcanDuman. MediaPipe bildirimleri için [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) dosyasına bakın.
