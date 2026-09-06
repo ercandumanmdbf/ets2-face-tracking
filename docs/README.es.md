@@ -50,22 +50,7 @@ La vista previa de la cámara solo aparece durante la calibración. Después de 
 
 El valor FPS mostrado corresponde a la frecuencia real de procesamiento de la cámara. TruckLook solicita hasta 120 FPS, pero la frecuencia final depende de la webcam, el controlador, la iluminación y el rendimiento del equipo. La salida OpenTrack se mantiene interpolada a 120 Hz.
 
-## Desarrollo
 
-Se necesita Node.js 20 o una versión posterior.
-
-```powershell
-npm install
-npm run dev
-npm test
-npm run package
-```
-
-El ejecutable portátil de Windows se crea en `release/`. Los archivos WASM de MediaPipe se copian desde la dependencia npm durante la compilación. El modelo Face Landmarker se descarga en tiempo de ejecución desde la dirección oficial de Google y no se redistribuye en este repositorio.
-
-## Publicación en GitHub
-
-Ejecuta `npm run prepare:github` después de empaquetar. Confirma únicamente el contenido de `github-upload/` en el repositorio de código. Adjunta el contenido de `github-release/` a una GitHub Release en lugar de confirmar el ejecutable. Consulta la [guía de carga en turco](../GITHUB_UPLOAD_GUIDE_TR.md) para ver los comandos exactos.
 
 ## Licencia
 
