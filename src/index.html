@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://storage.googleapis.com; worker-src 'self' blob:;" />
+    <title>TruckLook</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">TL</div>
+        <div><h1>TruckLook <small>by ErcanDuman</small></h1><p data-i18n="subtitle">ETS2 / ATS webcam tracker</p></div>
+      </div>
+      <div class="header-actions">
+        <label class="language-picker"><span data-i18n="language">Language</span><select id="languageSelect"></select></label>
+        <div class="connection"><span id="statusDot" class="dot"></span><span id="statusText" data-i18n="ready">Ready</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card preview-card">
+        <div class="section-title"><div><h2 data-i18n="camera">Camera</h2><p data-i18n="privacy">Video is processed only on this computer.</p></div><span id="fps" class="badge">0 FPS</span></div>
+        <div id="previewWrap" class="preview-wrap">
+          <video id="video" autoplay muted playsinline></video>
+          <canvas id="overlay"></canvas>
+          <div id="emptyState" class="empty-state"><div class="camera-icon">◉</div><strong data-i18n="stoppedTitle">Tracking has not started</strong><span data-i18n="stoppedBody">Select your camera and press Start.</span></div>
+          <div id="calibrationMessage" class="calibration-message hidden">Look at the center… 5.0s</div>
+        </div>
+        <div id="performanceState" class="performance-state hidden"><div class="tracking-pulse"><i></i></div><strong data-i18n="hiddenTitle">Tracking is active</strong><span data-i18n="hiddenBody">Camera preview is hidden to reduce rendering load. Recenter to show it for 5 seconds.</span></div>
+        <div class="pose-grid">
+          <div><span data-i18n="yaw">LEFT / RIGHT</span><strong id="yawValue">0.0°</strong><i><b id="yawBar"></b></i></div>
+          <div><span data-i18n="pitch">UP / DOWN</span><strong id="pitchValue">0.0°</strong><i><b id="pitchBar"></b></i></div>
+          <div><span data-i18n="roll">ROLL</span><strong id="rollValue">0.0°</strong><i><b id="rollBar"></b></i></div>
+        </div>
+      </section>
+
+      <aside class="card controls-card">
+        <div class="section-title"><div><h2 data-i18n="controls">Controls</h2><p>OpenTrack UDP · 127.0.0.1:4242 · 120 Hz</p></div></div>
+        <label class="field"><span data-i18n="cameraLabel">Camera</span><select id="cameraSelect"><option value="" data-i18n="defaultCamera">Default camera</option></select></label>
+
+        <div class="slider-field"><label for="headGain"><span data-i18n="headGain">Head sensitivity</span><output id="headGainOut">2.2×</output></label><input id="headGain" type="range" min="0.5" max="4" step="0.1" value="2.2" /></div>
+        <div class="slider-field"><label for="eyeGain"><span data-i18n="eyeGain">Eye contribution</span><output id="eyeGainOut">20%</output></label><input id="eyeGain" type="range" min="0" max="0.6" step="0.05" value="0.2" /></div>
+        <div class="slider-field"><label for="smoothing"><span data-i18n="smoothing">Smoothing</span><output id="smoothingOut">58%</output></label><input id="smoothing" type="range" min="0" max="0.94" step="0.02" value="0.58" /></div>
+        <div class="slider-field"><label for="deadzone"><span data-i18n="deadzone">Dead zone</span><output id="deadzoneOut">1.2°</output></label><input id="deadzone" type="range" min="0" max="5" step="0.2" value="1.2" /></div>
+
+        <div class="toggles">
+          <label><input id="invertYaw" type="checkbox" /><span data-i18n="invertYaw">Reverse left/right</span></label>
+          <label><input id="invertPitch" type="checkbox" checked /><span data-i18n="invertPitch">Reverse up/down</span></label>
+          <label><input id="invertRoll" type="checkbox" /><span data-i18n="invertRoll">Reverse roll</span></label>
+        </div>
+
+        <div class="actions">
+          <button id="startButton" class="primary" data-i18n="start">Start tracking</button>
+          <button id="centerButton" disabled data-i18n="center">Recenter</button>
+        </div>
+        <div class="pipeline">
+          <div><i class="state-dot active"></i><span>TruckLook</span><b data-i18n="appReady">Ready</b></div>
+          <div><i id="openTrackDot" class="state-dot"></i><span>OpenTrack</span><b id="openTrackState" data-i18n="notRunning">Not running</b></div>
+          <div><i id="ets2Dot" class="state-dot"></i><span>Euro Truck Simulator 2</span><b id="ets2State" data-i18n="closed">Closed</b></div>
+        </div>
+        <div class="hint"><strong data-i18n="openTrackSettings">OpenTrack setup</strong><span id="openTrackHint">Input: UDP over network · Filter: None<br />Output: freetrack 2.0 Enhanced → TrackIR</span></div>
+      </aside>
+    </main>
+
+    <footer><span>TruckLook <b id="version">0.2.0</b> · by ErcanDuman</span><span data-i18n="localProcessing">Local processing · No recording</span></footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+release/
+public/wasm/
+tools/
+github-upload/
+github-release/
+*.log
+.vite/
