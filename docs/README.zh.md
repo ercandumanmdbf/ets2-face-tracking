@@ -50,22 +50,7 @@ TruckLook 使用普通摄像头检测头部和眼睛运动，并将其转换为 
 
 界面显示的 FPS 是实际摄像头处理帧率。TruckLook 会请求最高 120 FPS，但最终帧率取决于摄像头、驱动程序、照明和电脑性能。OpenTrack 输出仍会插值到 120 Hz。
 
-## 开发
 
-需要 Node.js 20 或更高版本。
-
-```powershell
-npm install
-npm run dev
-npm test
-npm run package
-```
-
-便携式 Windows 程序会生成在 `release/` 目录中。构建时，MediaPipe WASM 文件会从 npm 依赖项复制。Face Landmarker 模型在运行时从 Google 官方模型地址下载，不会在本仓库中重新分发。
-
-## 发布到 GitHub
-
-打包后运行 `npm run prepare:github`。只将 `github-upload/` 中的内容提交到源代码仓库。不要提交可执行文件，而应将 `github-release/` 中的内容作为附件添加到 GitHub Release。准确命令请参阅[土耳其语上传指南](../GITHUB_UPLOAD_GUIDE_TR.md)。
 
 ## 许可证
 
