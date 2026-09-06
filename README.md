@@ -50,22 +50,6 @@ The camera preview appears only during calibration. After five seconds it is hid
 
 The displayed FPS value is the actual camera-processing rate. Although TruckLook requests up to 120 FPS, the final rate depends on the webcam, driver, lighting and computer performance. OpenTrack output stays interpolated at 120 Hz.
 
-## Development
-
-Node.js 20 or newer is required.
-
-```powershell
-npm install
-npm run dev
-npm test
-npm run package
-```
-
-The portable Windows executable is created under `release/`. MediaPipe WASM files are copied from the npm dependency during the build. The Face Landmarker model is downloaded at runtime from Google's official model URL and is not redistributed in this repository.
-
-## Publishing on GitHub
-
-Run `npm run prepare:github` after packaging. Commit only the contents of `github-upload/` to the source repository. Attach the contents of `github-release/` to a GitHub Release instead of committing the executable. See the [Turkish upload guide](GITHUB_UPLOAD_GUIDE_TR.md) for exact commands.
 
 ## License
 
