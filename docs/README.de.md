@@ -50,22 +50,6 @@ Die Kameravorschau ist nur während der Kalibrierung sichtbar. Nach fünf Sekund
 
 Die FPS-Anzeige entspricht der tatsächlichen Kamera-Verarbeitungsrate. TruckLook fordert bis zu 120 FPS an; die erreichbare Rate hängt jedoch von Webcam, Treiber, Beleuchtung und Rechnerleistung ab. Die OpenTrack-Ausgabe wird weiterhin auf 120 Hz interpoliert.
 
-## Entwicklung
-
-Node.js 20 oder neuer wird benötigt.
-
-```powershell
-npm install
-npm run dev
-npm test
-npm run package
-```
-
-Die portable Windows-Datei wird unter `release/` erzeugt. MediaPipe-WASM-Dateien werden beim Build aus der npm-Abhängigkeit kopiert. Das Face-Landmarker-Modell wird zur Laufzeit von Googles offizieller Modelladresse geladen und nicht in diesem Repository weitergegeben.
-
-## Veröffentlichung auf GitHub
-
-Nach dem Paketieren `npm run prepare:github` ausführen. Nur den Inhalt von `github-upload/` in das Quellrepository committen. Den Inhalt von `github-release/` an ein GitHub Release anhängen, statt die ausführbare Datei zu committen. Die genauen Befehle stehen in der [türkischen Upload-Anleitung](../GITHUB_UPLOAD_GUIDE_TR.md).
 
 ## Lizenz
 
